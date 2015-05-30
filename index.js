@@ -11,6 +11,9 @@ module.exports = function(aws, profile, env){
     profile = profile || 'default';
     env = env || process.env;
   } 
+  process.env.AWS_ACCESS_KEY_ID = env.AWS_ACCESS_KEY_ID; 
+  process.env.AWS_SECRET_ACCESS_KEY = env.AWS_SECRET_ACCESS_KEY;
+  process.env.AWS_SESSION_TOKEN = env.AWS_SESSION_TOKEN;
 
   if(env.AWS_ACCESS_KEY_ID){
     credentials = new aws.EnvironmentCredentials('AWS');

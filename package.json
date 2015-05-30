@@ -1,0 +1,28 @@
+{
+  "name": "aws-auto-auth",
+  "version": "0.0.1",
+  "description": "Authenticate to aws simple, with fallbacks.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wpears/aws-auto-auth.git"
+  },
+  "keywords": [
+    "aws",
+    "auth",
+    "credentials"
+  ],
+  "author": "Wyatt Pearsall <wyatt.pearsall@cfpb.gov>",
+  "license": "CC0",
+  "bugs": {
+    "url": "https://github.com/wpears/aws-auto-auth/issues"
+  },
+  "homepage": "https://github.com/wpears/aws-auto-auth",
+  "devDependencies": {
+    "aws-sdk": "^2.1.32",
+    "tape": "^4.0.0"
+  }
+}

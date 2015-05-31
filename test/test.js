@@ -86,3 +86,23 @@ test('Only aws', function(t){
   t.ok(cred, 'Makes credentials.');
   t.ok(cred.accessKeyId, 'Credentials from profile.');
 });
+
+test('Empty credentials object and env', function(t){
+  t.plan(2); 
+
+  process.env.AWS_ACCESS_KEY_ID = 'fake';
+  process.env.AWS_SECRET_ACCESS_KEY = 'faker';
+
+  var cred = awsAutoAuth(aws, {});
+  t.ok(cred, 'Makes credentials.');
+  t.equal(cred.accessKeyId, 'fake', 'Credentials from env, empty credentials obj skipped.');
+});
+test('No aws', function(t){
+  t.plan(1);
+
+  try{
+    awsAutoAuth();
+  }catch(e){
+    t.pass('Bails with no aws object passed.');
+  }
+});

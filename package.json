@@ -1,6 +1,6 @@
 {
   "name": "aws-auto-auth",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Authenticate to aws simply, with fallbacks.",
   "main": "index.js",
   "scripts": {

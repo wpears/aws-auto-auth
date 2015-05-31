@@ -9,22 +9,26 @@ test('With profile', function(t){
   t.ok(cred.accessKeyId, 'Picks up access key.')
 });
 
-test('With env', function(t){
+test('With obj', function(t){
   t.plan(2);
-  var cred = awsAutoAuth(aws, {AWS_ACCESS_KEY_ID:'fake', AWS_SECRET_ACCESS_KEY:'faker'});
-  t.ok(cred, 'Makes credentials.');
+  var cred = awsAutoAuth(aws, {accessKeyId: 'fake', secretAccessKey:'faker'});
   console.log(cred);
-  t.equal(cred.accessKeyId, 'fake');
+  t.ok(cred, 'Makes credentials.');
+  t.equal(cred.accessKeyId, 'fake', 'Credentials from obj.');
 });
 
-test('With profile and env', function(t){
-
+test('With profile and obj', function(t){
+  t.plan(2);
+  var cred = awsAutoAuth(aws, 'default', {accessKeyId: 'fake', secretAccessKey:'faker'});
+  t.ok(cred, 'Makes credentials.');
+  t.equal(cred.accessKeyId, 'fake', 'Credentials from obj override profile.');
 });
 
 test('Only aws', function(t){
-
-});
-
-test('With profile', function(t){
-
+ t.plan(3); 
+  var cred = awsAutoAuth(aws);
+  console.log(cred);
+  t.ok(cred, 'Makes credentials.');
+  t.ok(cred.accessKeyId, 'Credentials from profile.');
+  t.notEqual(cred.accessKeyId, 'fake', 'Credentials not from env.');
 });

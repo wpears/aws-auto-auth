@@ -11,7 +11,7 @@ module.exports = function(aws, profile, obj){
 
   profile = profile || 'default';
 
-  if(obj){
+  if(obj && obj.accessKeyId){
     credentials = new aws.Credentials(obj); 
   }else if(process.env.AWS_ACCESS_KEY_ID){
     credentials = new aws.EnvironmentCredentials('AWS');
